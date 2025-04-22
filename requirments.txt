@@ -1,0 +1,7 @@
+Flask
+flask_sqlalchemy
+deepface
+opencv-python
+pandas
+tensorflow
+numpy
