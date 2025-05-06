@@ -11,60 +11,109 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>FACE RECOGNITION APP WOOOOOOOOO</h1>
-        </div>
-    </header>
+    <div class="page-container">
+        <header>
+            <div class="header-container">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo_dark.png') }}" class="logo">
+                </a>
+                <div class="nav-buttons">
+                    <a href="/about" class="nav-btn">About</a>
+                    <a href="/guidelines" class="nav-btn">Guide</a>
+                    <a href="/profile" class="profile-btn">
+                        <img src="{{ url_for('static', filename='images/profile-icon.png') }}" class="profile-icon">
+                    </a>
+                </div>
+            </div>
+        </header>
 
-    <h2>add a person (upload a picture)</h2>
+        <main class="content">
+            <!-- UPLOADED IMAGES SECTION -->
+            <div class="gallery">
+              <h2 class="uploaded-section-heading">SAVED PEOPLE</h2>
 
-    <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" id="file-upload" required hidden>
-    <label for="file-upload" class="add-person-btn">
-        <img src="{{ url_for('static', filename='images/add-person-button.png') }}" alt="Upload" class="add-person-btn-img">
-    </label>
-    <button type="submit" class="upload-btn">
-        <img src="{{ url_for('static', filename='images/upload-button.png') }}" alt="Submit Upload" class="upload-btn-img">
-    </button>
-    </form>
+              <div class="image-container-grid">
+                {% for image in images %}
+                  <div class="image-container">
+                    <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" alt="face"
+                      onerror="this.src='{{ url_for('static', filename='images/placeholder.png') }}'; this.onerror=null;">
 
-    <br>
+                    <div class="name-box">
+                        <div class="name-box-row">
+                            <input type="text" value="{{ image.name }}" data-id="{{ image.id }}">
+                            <button class="save-btn" onclick="saveName(this)">Save</button>
+                        </div>
+                        <div class="delete-btn-container">
+                            <button class="delete-btn" onclick="confirmDelete('{{ image.id }}')">
+                                <img src="{{ url_for('static', filename='images/delete-button.png') }}" alt="Delete" class="delete-btn-img">
+                            </button>
+                        </div>
+                    </div>
+                  </div>
+                {% endfor %}
 
-    <h2>uploaded images</h2>
-    <div class="gallery">
-        {% for image in images %}
-        <div class="image-container">
-            <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" alt="face" onerror="this.src='{{ url_for('static', filename='images/placeholder.png') }}'; this.onerror=null;">
-            <input type="text" value="{{ image.name }}" data-id="{{ image.id }}">
-            <button class="save-btn" onclick="saveName(this)">
-                <img src="{{ url_for('static', filename='images/save-button.png') }}" alt="Save" class="save-btn-img">
-            </button>
-        </div>
-        {% endfor %}
+                <!-- Add new card inside the grid -->
+                <div class="image-container add-new-card">
+                  <form action="/upload" method="post" enctype="multipart/form-data">
+                    <label for="file-upload" class="add-person-btn">
+                      <img src="{{ url_for('static', filename='images/add-person-button.png') }}" alt="Upload" class="add-person-btn-img">
+                    </label>
+                    <input type="file" name="file" id="file-upload" required hidden>
+                    <button type="submit" class="upload-btn">Upload</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <br>
+
+            <script>
+            function saveName(button) {
+                let input = button.previousElementSibling;
+                let newName = input.value;
+                let imageId = input.getAttribute("data-id");
+
+                fetch("/update_name", {
+                    method: "POST",
+                    body: JSON.stringify({ id: imageId, name: newName}),
+                    headers: { "Content-Type": "application/json"}
+                }).then(response => response.json())
+                .then(data => alert(data.message))
+                .catch(error => console.error("Error:", error));
+            }
+            </script>
+
+            <script>
+            function confirmDelete(imageId) {
+                if (confirm("Are you sure you want to delete the image?")) {
+                    fetch("/delete_image", {
+                        method: "POST",
+                        body: JSON.stringify({ id: imageId }),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        location.reload(); // reload page to reflect deletion
+                    })
+                    .catch(error => console.error("Error:", error));
+                }
+            }
+            </script>
+
+        </main>
+        <footer></footer>
+
+    <!-- CAMERA BUTTON -->
+    <div class="camera-btn-container">
+        <button onclick="location.href='/start_camera'" class="camera-btn">
+        <img src="{{ url_for('static', filename='images/camera-button-border.png') }}" alt="Start Camera" class="camera-btn-img">
+        </button>
     </div>
 
-    <br>
-
-    <h2>start camera</h2>
-    <button onclick="location.href='/start_camera'" class="camera-btn">
-        <img src="{{ url_for('static', filename='images/camera-button.png') }}" alt="Start Camera" class="camera-btn-img">
-    </button>
-
-    <script>
-    function saveName(button) {
-        let input = button.previousElementSibling;
-        let newName = input.value;
-        let imageId = input.getAttribute("data-id");
-
-        fetch("/update_name", {
-            method: "POST",
-            body: JSON.stringify({ id: imageId, name: newName}),
-            headers: { "Content-Type": "application/json"}
-        }).then(response => response.json())
-        .then(data => alert(data.message))
-        .catch(error => console.error("Error:", error));
-    }
-    </script>
+    </div>
 </body>
 </html>

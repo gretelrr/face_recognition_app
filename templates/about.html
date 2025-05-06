@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition App</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="page-container">
+        <header>
+            <div class="header-container">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo_dark.png') }}" class="logo">
+                </a>
+                <div class="nav-buttons">
+                    <a href="/about" class="nav-btn">About</a>
+                    <a href="/guidelines" class="nav-btn">Guide</a>
+                    <a href="/profile" class="profile-btn">
+                        <img src="{{ url_for('static', filename='images/profile-icon.png') }}" class="profile-icon">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="text-container">
+                <h1 class="about-title">About</h1>
+                <h2 class="text-container-titles">What is prosopagnosia?</h2>
+                <p class="text-container-texts">Prosopagnosia, also called “face blindness”, is an impaired ability to recognise individuals by their face, categorised as developmental (onset in early childhood) and acquired (onset later in life). <a href="#ref1" class="ref-link">[1]</a>
+                For both acquired and developmental prosopagnosia, standardised criteria is to a large extent absent <a href="#ref2" class="ref-link">[2]</a>, often resulting in misdiagnosis, being confused with visual agnosia, memory deficits, or inattentiveness. <a href="#ref3" class="ref-link">[3]</a> <a href="#ref4" class="ref-link">[4]</a></p>
+                <h2 class="text-container-titles">How many are affected by prosopagnosia?</h2>
+                <p class="text-container-texts">Developmental prosopagnosia affects approximately 2 - 2,5% of the population and seems to sometimes occur hereditarily. <a href="#ref5" class="ref-link">[5]</a> More recent studies have found prosopagnosia occurring even more often, claiming it may affect over 3% of the population. <a href="#ref6" class="ref-link">[6]</a></p>
+                <h2 class="text-container-titles">Social challenges of prosopagnosia</h2>
+                <p class="text-container-texts">Adults with developmental prosopagnosia have reported recurrent and sometimes traumatic social interaction difficulties, such as failing to recognise close friends, colleagues, and family members, leading them to chronic anxiety, embarrassment, guilt, and social avoidance <a href="#ref7" class="ref-link">[7]</a></p>
+                <p class="text-container-texts">💖 "Anxiety" – DOECHII 💖</p>
+                <h2 class="text-container-titles">Our support tool</h2>
+                <p class="text-container-texts">idk we can write what it is after the paper is written for this part 🥰</p>
+            </div>
+
+
+            <div class="references-container">
+                <h2 class="references-title">References</h2>
+                <ol class="reference-list">
+                    <li id="ref1">Josephs, K. A., & Josephs, K. A., Jr. (2024). Prosopagnosia: Face blindness and its association with neurological disorders. Brain Communications, 6(1), fcae002. https://doi.org/10.1093/braincomms/fcae002</li>
+                    <li id="ref2">Behrmann, M., & Avidan, G. (2005). Congenital prosopagnosia: Face-blind from birth. Trends in Cognitive Sciences, 9(4), 180–187. https://doi.org/10.1016/j.tics.2005.02.011</li>
+                    <li id="ref3">Duchaine, B. C., & Nakayama, K. (2006). Developmental prosopagnosia: A window to content-specific face processing. Current Opinion in Neurobiology, 16(2), 166–173. https://doi.org/10.1016/j.conb.2006.03.003</li>
+                    <li id="ref4">Susilo, T., & Duchaine, B. (2013). Advances in developmental prosopagnosia research. Current Opinion in Neurobiology, 23(3), 423–429. https://doi.org/10.1016/j.conb.2012.12.011</li>
+                    <li id="ref5">Kennerknecht, I., Grueter, T., Welling, B., Wentzek, S., Horst, J., Edwards, S., & Grueter, M. (2006). First report of prevalence of non-syndromic hereditary prosopagnosia (HPA). American Journal of Medical Genetics Part A, 140A(15), 1617–1622. https://doi.org/10.1002/ajmg.a.31343</li>
+                    <li id="ref6">DeGutis, J., Bahierathan, K., Barahona, K., Lee, E., Evans, T. C., Shin, H. M., Mishra, M., Likitlersuang, J., & Wilmer, J. B. (2023). What is the prevalence of developmental prosopagnosia? An empirical assessment of different diagnostic cutoffs. Cortex, 161, 51–64. https://doi.org/10.1016/j.cortex.2022.12.014</li>
+                    <li id="ref7">Yardley, L., McDermott, L., Pisarski, S., Duchaine, B., & Nakayama, K. (2008). Psychosocial consequences of developmental prosopagnosia: A problem of recognition. Journal of Psychosomatic Research, 65(5), 445–451. https://doi.org/10.1016/j.jpsychores.2008.03.013</li>
+                </ol>
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>
