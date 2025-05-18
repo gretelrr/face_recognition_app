@@ -19,7 +19,6 @@
                     <img src="{{ url_for('static', filename='images/logo_dark.png') }}" class="logo">
                 </a>
                 <div class="nav-buttons">
-                    <a href="/about" class="nav-btn">About</a>
                     <a href="/guidelines" class="nav-btn">Guide</a>
                     <a href="/profile" class="profile-btn">
                         <img src="{{ url_for('static', filename='images/profile-icon.png') }}" class="profile-icon">
@@ -29,18 +28,20 @@
         </header>
 
         <main class="content">
-            <div class="text-container">
-                <h1>Guide</h1>
-            </div>
             <div class="guide-gallery">
+                <h1 class="guide-title">Guide</h1>
                 <div class="guide-gallery-grid">
                     <div class="guide-card">
                         <img src="{{ url_for('static', filename='images/add-card-guide.png') }}" class="guide-img">
                         <p class="guide-card-text">Press on "+" to choose a picture to upload. Press "Upload" to upload the picture.</p>
                     </div>
                     <div class="guide-card">
-                        <img src="{{ url_for('static', filename='images/face-card-guide.png') }}" class="guide-img">
-                        <p class="guide-card-text">Click on the name to change the name, press "Save" to save the updated name. Press the rubbish bin icon to delete the face card.</p>
+                        <img src="{{ url_for('static', filename='images/change-name-guide.png') }}" class="guide-img">
+                        <p class="guide-card-text">Click on the name to change the name, press "Save" to save the updated name.</p>
+                    </div>
+                    <div class="guide-card">
+                        <img src="{{ url_for('static', filename='images/delete-person-guide.png') }}" class="guide-img">
+                        <p class="guide-card-text">Press the rubbish bin icon to delete the face card.</p>
                     </div>
                     <div class="guide-card">
                         <img src="{{ url_for('static', filename='images/camera-guide.png') }}" class="guide-img">

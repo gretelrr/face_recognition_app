@@ -19,7 +19,6 @@
                     <img src="{{ url_for('static', filename='images/logo_dark.png') }}" class="logo">
                 </a>
                 <div class="nav-buttons">
-                    <a href="/about" class="nav-btn">About</a>
                     <a href="/guidelines" class="nav-btn">Guide</a>
                     <a href="/profile" class="profile-btn">
                         <img src="{{ url_for('static', filename='images/profile-icon.png') }}" class="profile-icon">
@@ -31,7 +30,14 @@
         <main class="content">
             <div class="profile-container">
                 <img src="{{ url_for('static', filename='images/profile_picture.png') }}" class="profile-picture">
-                <h1 class="your-name">Your name</h1>
+                <h2 class="your-name">Your name</h2>
+                <div class="profile-information">
+                    <p class="profile-titles">Email:</p>
+                    <p class="profile-text">your.email@gmail.com</p>
+                    <p class="profile-titles">Phone (optional):</p>
+                    <p class="profile-text">+45 xx xx xx xx</p>
+                </div>
+                <button class="password-btn">Change password</button>
             </div>
         </main>
     </div>

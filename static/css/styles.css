@@ -123,16 +123,24 @@ footer {
 }
 
 .gallery {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 15px;
     border-radius: 15px;
     border: 3px solid rgb(208, 98, 36);
-    margin-left: 8%;
-    margin-right: 8%;
-    margin-top: 150px;
-    margin-bottom: 130px;
+    margin: 170px 8% 130px 8%;
     padding: 15px 20px 15px 20px;
+}
+
+.gallery-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  position: relative;
 }
 
 .guide-img {
@@ -147,8 +155,7 @@ footer {
     flex-direction: column;
     align-items: center;
     height: auto;
-    width: 300px;
-    padding: 5px;
+    max-width: 250px;
 }
 
 .guide-card-text {
@@ -163,17 +170,24 @@ footer {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1100px;
+   padding: 0 auto;
 }
 
 .guide-gallery {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #ffe3be;
     border-radius: 15px;
-    margin: 0px 7% 130px 7%;
-    padding: 20px 40px 15px 40px;
+    margin: 170px 7% 130px 7%;
+    padding: 20px 20px 15px 20px;
+}
+
+.guide-title {
+    margin-top: 30px;
 }
 
 h1, h2, title {
@@ -210,7 +224,11 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0px 60px
+    padding: 0px 3%;
+}
+
+.hidden {
+    display: none;
 }
 
 html, body {
@@ -228,7 +246,7 @@ html, body {
     border-radius: 10px;
     background-color: #ffe3be;
     width: 180px;
-    height: 250px;
+    height: 275px;
     position: relative;
 }
 
@@ -251,24 +269,8 @@ html, body {
     object-fit: cover;
     border-radius: 10px;
     margin-top: 5px;
-}
-
-input[type="text"] {
-    border-radius: 10px;
-    font-size: 17px;
-    font-family: "Helvetica", sans-serif;
-    font-weight: bold;
-    outline: none;
-    color: rgb(46, 46, 46);
-    background-color: #ffe3be;
-    border: none;
-    text-align: center;
-    height: 30px;
-    width: 80px;
-}
-
-input[type="text"]:hover {
-    border: 1px solid rgb(46, 46, 46);
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 li {
@@ -301,13 +303,30 @@ li {
     gap: 10px;
 }
 
-.name-box-row {
+.name-box-col {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
     align-items: center;
-    position: absolute;
-    bottom: 13px;
+}
+
+.name-input {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    outline: none;
+    color: rgb(46, 46, 46);
+    background-color: #ffe3be;
+    border: none;
+    text-align: center;
+    height: 30px;
+    width: 150px;
+}
+
+.name-input:hover {
+    border: 1px solid rgb(46, 46, 46);
 }
 
 .nav-buttons {
@@ -331,8 +350,24 @@ li {
     transform: scale(1.05);
 }
 
-p:not(.text-container-texts), div:not(.header-container, .name-box-border, .page-container, .text-container, .references-container, .guide-gallery) {
+p:not(.text-container-texts, .profile-titles, .profile-text), div:not(.header-container, .name-box-border, .page-container, .text-container, .references-container, .guide-gallery) {
     padding: 15px 20px 15px 20px;
+}
+
+.password-btn {
+    background-color: rgb(208, 98, 36);
+    color: rgb(255, 242, 225);
+    margin-top: 10px;
+    padding: 5px 13px 5px 13px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 13px;
+    transition: transform 0.3s ease;
+}
+
+.password-btn:hover {
+    transform: scale(1.05);
 }
 
 .page-container {
@@ -361,16 +396,37 @@ p:not(.text-container-texts), div:not(.header-container, .name-box-border, .page
     align-items: center;
     background-color: #ffe3be;
     border-radius: 15px;
-    margin: 165px 30% 120px 30%;
+    margin: 165px 33% 120px 33%;
     height: 600px;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 30px 20px 30px;
+}
+
+.profile-information {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.profile-titles {
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: black: rgb(46, 46, 46);
+    margin: 0;
+}
+
+.profile-text {
+    font-family: "Helvetica", sans-serif;
+    font-size: 20px;
+    color: black: rgb(46, 46, 46);
+    margin: 0 0 15px;
 }
 
 .profile-picture {
     width: 200px;
     height: 200px;
     border-radius: 15px;
-    margin: 40px;
+    margin: 30px 0 20px 0;
 }
 
 .ref-link {
@@ -417,6 +473,36 @@ p:not(.text-container-texts), div:not(.header-container, .name-box-border, .page
     transform: scale(1.05);
 }
 
+.search-bar {
+  padding: 8px 12px 8px 36px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Helvetica", sans-serif;
+  outline: none;
+  border: 2px solid rgb(208, 98, 36);
+  color: rgb(46, 46, 46);
+  background-color: rgba(208, 98, 36, 0.47);
+  height: 30px;
+  max-width: 150px;
+
+  background-image: url('/static/images/search-bar-light.png');
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 16px 16px;
+}
+
+.search-bar:hover {
+    transform: scale(1.05);`
+}
+
+.search-wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
 .upload-btn {
     background-color: rgb(208, 98, 36);
     color: rgb(255, 242, 225);
@@ -433,12 +519,13 @@ p:not(.text-container-texts), div:not(.header-container, .name-box-border, .page
 }
 
 .uploaded-section-heading {
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    color: rgb(208, 98, 36);
-    margin-top: 15px;
-    margin-bottom: 0px;
+  flex: 1 1 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 34px;
+  color: rgb(208, 98, 36);
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .text-container {
@@ -458,4 +545,8 @@ p:not(.text-container-texts), div:not(.header-container, .name-box-border, .page
     margin-top: 15px;
     margin-bottom: 30px;
     font-family: "Helvetica", sans-serif;
+}
+
+.your-name {
+    font-size: 34px;
 }

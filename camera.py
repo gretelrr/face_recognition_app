@@ -5,7 +5,7 @@ import glob
 
 
 def recognize_faces():
-    # Debug: Print directory structure
+    # debugging
     print("Checking database directory...")
     uploads_dir = "static/uploads"
 
@@ -29,7 +29,7 @@ def recognize_faces():
 
     # debugging
     if not cap.isOpened():
-        print("Failed to open camera 💀")
+        print("Failed to open camera")
         return
 
     while True:
@@ -41,8 +41,6 @@ def recognize_faces():
         cv2.imwrite(temp_frame_path, frame)  # Save the frame temporarily
 
         try:
-            # Here's the key change - we'll check against each reference image individually
-            # rather than letting DeepFace.find search the directory
             for ref_img_path in image_paths:
                 try:
                     result = DeepFace.verify(
@@ -61,7 +59,6 @@ def recognize_faces():
                         break  # Stop after first match
 
                 except Exception as e:
-                    # Quietly continue if one comparison fails
                     continue
 
         except Exception as e:
@@ -72,7 +69,7 @@ def recognize_faces():
         if os.path.exists(temp_frame_path):
             os.remove(temp_frame_path)
 
-        if cv2.waitKey(1) & 0xFF == ord("q"):  # Press 'Q' to exit
+        if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
     cap.release()

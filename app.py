@@ -1,15 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, current_app
 from flask_sqlalchemy import SQLAlchemy
-from app import app
 import os
 import subprocess
 
-app = Flask(__name__, instance_relative_config=True) # initiates a flask app
+app = Flask(__name__) # initiates a flask app
 
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/images.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
